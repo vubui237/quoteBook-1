@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quote-Haven</title>
+</head>
+<body ng-controller="control">
+    <!-- Remember to add to a separate CSS file later. -->
+    <div style="background-color: rgb(245,255,250); border-radius: 5%; border: rgb(170,170,170) solid 3px; font-size: 1.5em">
+    Filter: 
+     <input style="background-color: rgb(245,255,250); border-radius: 5%; border: rgb(170,170,170) solid 1px; font-size: 0.5em" type="text" placeholder="Type here" ng-model="filterText"></div>
+    <div ng-repeat="value in displayQuotes | filter: filterText track by $index" style="background-color: rgb(245,255,250); border-radius: 0 0 15px 15px; border: rgb(170,170,170) solid 3px; font-size: 1.5em">
+        "{{value.text}}" 
+        <span style="color: rgb(107,107,107)">{{value.author}}</span>
+        <button type="button" style="border: black; float: right; margin: 2px; border-radius: 50%; color: white; background-color: black" ng-click="deleteQuote($index)"><b>X</b></button>
+    </div>
+    <div style="background-color: rgb(245,255,250); border-radius: 5%; border: rgb(170,170,170) solid 3px; font-size: 1.5em">
+    Add a quote:
+     <input style="background-color: rgb(245,255,250); border-radius: 5%; border: rgb(170,170,170) solid 1px; font-size: 0.5em" type="text" placeholder="Quote" ng-model="quote"><input style="background-color: rgb(245,255,250); border-radius: 5%; border: rgb(170,170,170) solid 1px; font-size: 0.5em" type="text" placeholder="Author" ng-model="author"> 
+    <button type="button" style="border: black; float: right; margin: 2px; border-radius: 50%; color: white; background-color: black" ng-click="addQuote(quote,author)"><b>+</b></button>
+    </div>
+</body>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.js'></script>
+<script src="app.js"></script>
+<script src="controller.js"></script>
+<script src="services.js"></script>
+</html>
